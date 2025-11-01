@@ -8,16 +8,35 @@ export default function RegisterModal({ onClose, onSwitchToLogin }) {
     password: "",
   });
   const [role, setRole] = useState(""); // "prof" ou "apprenant"
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!role) {
+      setMessage("Veuillez sélectionner un rôle");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
     try {
-      await api.post("/register", { ...form, role });
-      alert("Inscription réussie !");
-      onSwitchToLogin();
+      const res = await api.post("/register", { ...form, role });
+
+      setMessage(
+        "Inscription réussie ! Vérifiez votre email pour confirmer votre compte."
+      );
+
+      // Tu peux automatiquement basculer vers login après 3 secondes
+      setTimeout(() => {
+        onSwitchToLogin();
+      }, 3000);
     } catch (err) {
       console.error(err);
-      alert("Erreur d'inscription");
+      setMessage(err.response?.data?.message || "Erreur d'inscription");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -30,7 +49,7 @@ export default function RegisterModal({ onClose, onSwitchToLogin }) {
         >
           ✕
         </button>
-        <h2 className="text-2xl font-bold mb-4 text-center">
+        <h2 className="text-2xl font-bold mb-4 text-center text-[#2B2E83]">
           Créer un compte
         </h2>
 
@@ -66,7 +85,7 @@ export default function RegisterModal({ onClose, onSwitchToLogin }) {
               onClick={() => setRole("apprenant")}
               className={`px-4 py-2 rounded-lg border ${
                 role === "apprenant"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-[#2B2E83] text-white"
                   : "bg-gray-100 text-gray-700"
               }`}
             >
@@ -77,7 +96,7 @@ export default function RegisterModal({ onClose, onSwitchToLogin }) {
               onClick={() => setRole("prof")}
               className={`px-4 py-2 rounded-lg border ${
                 role === "prof"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-[#2B2E83] text-white"
                   : "bg-gray-100 text-gray-700"
               }`}
             >
@@ -87,17 +106,24 @@ export default function RegisterModal({ onClose, onSwitchToLogin }) {
 
           <button
             type="submit"
-            className="bg-blue-600 text-white rounded-lg py-2 mt-4 hover:bg-blue-700"
+            disabled={loading}
+            className={`mt-4 py-2 rounded-lg text-white ${
+              loading ? "bg-gray-400" : "bg-[#2B2E83] hover:bg-[#3B46F1]"
+            }`}
           >
-            S’inscrire
+            {loading ? "Inscription..." : "S’inscrire"}
           </button>
         </form>
+
+        {message && (
+          <p className="text-center mt-3 text-sm text-red-600">{message}</p>
+        )}
 
         <p className="text-sm text-center mt-4">
           Déjà un compte ?{" "}
           <button
             onClick={onSwitchToLogin}
-            className="text-blue-600 hover:underline"
+            className="text-[#2B2E83] hover:underline"
           >
             Se connecter
           </button>

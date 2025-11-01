@@ -1,21 +1,16 @@
-export default function Courses({ date, prof, subject, status }) {
-  const statusColor = {
-    "En attente": "text-yellow-500",
-    "Terminé": "text-green-500",
-    "Annulé": "text-red-500",
-  }[status] || "text-gray-500";
+// src/pages/Courses.jsx - CORRIGÉ
+import React from 'react';
 
+const Courses = () => {
   return (
-    <tr className="border-b hover:bg-gray-50">
-      <td className="p-3">{date}</td>
-      <td className="p-3">{prof}</td>
-      <td className="p-3">{subject}</td>
-      <td className={`p-3 font-semibold ${statusColor}`}>{status}</td>
-      <td className="p-3">
-        <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">
-          Action
-        </button>
-      </td>
-    </tr>
+    <div className="p-6">
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">Cours</h1>
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <p className="text-gray-600">Liste des cours disponibles...</p>
+        {/* Ajoutez votre contenu ici */}
+      </div>
+    </div>
   );
-}
+};
+
+export default Courses; // ⚠️ Très important : "export default"
