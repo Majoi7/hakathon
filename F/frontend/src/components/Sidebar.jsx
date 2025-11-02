@@ -1,5 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import api from "./api";
+
 import {
   HomeIcon,
   UserGroupIcon,
@@ -18,8 +20,8 @@ export default function Sidebar() {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        await axios.post(
-          "http://127.0.0.1:8000/api/logout",
+        await api.post(
+          "/api/logout",
           {},
           { headers: { Authorization: `Bearer ${token}` } }
         );
