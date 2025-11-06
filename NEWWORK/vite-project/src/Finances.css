@@ -1,0 +1,252 @@
+.finances {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Title */
+.finances-title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+/* Balance Cards */
+.balance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .balance-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.balance-card {
+  position: relative;
+  border-radius: 1rem;
+  padding: 2rem;
+  color: white;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.balance-available {
+  background: linear-gradient(to bottom right, #10b981, #0d9488);
+}
+
+.balance-earnings {
+  background: linear-gradient(to bottom right, #3b82f6, #4f46e5);
+}
+
+.balance-blur {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10rem;
+  height: 10rem;
+  background-color: white;
+  border-radius: 9999px;
+  filter: blur(64px);
+  opacity: 0.1;
+}
+
+.balance-content {
+  position: relative;
+  z-index: 10;
+}
+
+.balance-label {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.balance-amount {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.balance-comparison {
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.withdraw-btn {
+  background-color: white;
+  color: #059669;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.withdraw-btn:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-0.125rem);
+}
+
+/* Payment Methods */
+.payment-methods-section {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .payment-methods-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.payment-method-card {
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.payment-method-card:hover {
+  border-color: #d8b4fe;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.payment-icon {
+  font-size: 1.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.payment-name {
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.payment-delay {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+/* Transactions */
+.transactions-section {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.transactions-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-item {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.2s;
+}
+
+.transaction-item:hover {
+  background-color: #f9fafb;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.transaction-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transaction-icon.status-completed {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.transaction-icon.status-pending {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.transaction-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-amount {
+  font-weight: 700;
+  color: #111827;
+  font-size: 1rem;
+}
+
+.transaction-method {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.transaction-meta {
+  text-align: right;
+}
+
+.transaction-date {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.transaction-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
+.transaction-status.status-completed-text {
+  color: #059669;
+}
+
+.transaction-status.status-pending-text {
+  color: #d97706;
+}
